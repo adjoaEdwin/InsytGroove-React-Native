@@ -6,6 +6,7 @@ import AllComments from './Comments';
 
 const PostPage = ({route, navigation}) => {
   const {id} = route.params;
+
   return (
     <>
       {route.params && <Post {...route.params} />}
