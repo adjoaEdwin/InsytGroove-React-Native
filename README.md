@@ -1,6 +1,6 @@
 # InsytGroove-React-Native
 
-### Installation
+### Follow these steps to run the project
 
 NB: Make sure you have Nodejs, React Native Cli, Watchman and Xcode installed or you may follow the installation procedures in the [React Native Docs](https://facebook.github.io/react-native/docs/getting-started)
 
