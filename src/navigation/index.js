@@ -5,6 +5,8 @@ import SignIn from '../components/SignIn';
 import {useAuth} from '../providers/AuthProvider';
 import Splashscreen from '../components/SplashScreen';
 import UsersStackScreen from '../components/Users';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import SettingScreen from '../components/Setting';
 
 export default function rootNavigator(props) {
   const Stack = createStackNavigator();
@@ -20,12 +22,25 @@ export default function rootNavigator(props) {
   return (
     <>
       {state.userToken ? (
-        <Tab.Navigator>
+        <Tab.Navigator
+          screenOptions={({route}) => ({
+            tabBarIcon: ({color, size}) => {
+              let iconName;
+
+              if (route.name === 'Home') {
+                iconName = 'home';
+              } else if (route.name === 'Setting') {
+                iconName = 'cog';
+              }
+              return <Icon name={iconName} size={size} color={color} />;
+            },
+          })}>
           <Tab.Screen name="Home" component={UsersStackScreen} {...props} />
+          <Tab.Screen name="Setting" component={SettingScreen} {...props} />
         </Tab.Navigator>
       ) : (
-        <Stack.Navigator>
-          <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Navigator headerMode={'none'}>
+          <Stack.Screen name="Sign In" component={SignIn} />
         </Stack.Navigator>
       )}
     </>

@@ -12,7 +12,7 @@ function PostProvider({children}) {
 function usePost() {
   const context = useContext(PostContext);
   if (typeof context === undefined) {
-    throw new Error(`useUser must be used within a provider`);
+    throw new Error('useUser must be used within a provider');
   }
   return context;
 }
