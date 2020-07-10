@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Alert} from 'react-native';
 import {Input, Button, Text} from 'react-native-elements';
 import {useAuth} from '../providers/AuthProvider';
 
@@ -10,7 +10,11 @@ const SignIn = () => {
   const {authContext} = useAuth();
 
   const handleSignIn = () => {
-    authContext.signIn({username, password});
+    if (username === 'esoko' && password === 'insyt') {
+      authContext.signIn({username, password});
+    } else {
+      Alert.alert('Invalid login details');
+    }
   };
 
   return (

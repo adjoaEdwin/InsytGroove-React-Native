@@ -6,11 +6,12 @@ import {Card, Button} from 'react-native-elements';
 const User = ({id, name, email}) => {
   const navigation = useNavigation();
   return (
-    <Card title="CARD WITH DIVIDER">
-      <View>
+    <Card>
+      <View style={styles.conatiner}>
         <Image
-          resizeMode="cover"
-          source={{uri: `https://robohash.org/${id}?200x200`}}
+          style={styles.avatar}
+          resizeMode="contain"
+          source={require('assets/images/user-profile.jpg')}
         />
         <View style={styles.name}>
           <Text>{name}</Text>
@@ -28,6 +29,13 @@ const User = ({id, name, email}) => {
 const styles = StyleSheet.create({
   name: {
     padding: 5,
+  },
+  conatiner: {
+    padding: 10,
+  },
+  avatar: {
+    width: 66,
+    height: 58,
   },
 });
 

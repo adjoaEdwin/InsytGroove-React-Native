@@ -1,19 +1,10 @@
-import React, {createContext, useState, useEffect, useContext} from 'react';
-import {getPostByUserId} from '../services/api';
+import React, {createContext, useState, useContext} from 'react';
+import {AllPosts} from '../posts';
 
 const PostContext = createContext();
 
 function PostProvider({children}) {
-  const [posts, setPosts] = useState([]);
-
-  async function getPosts() {
-    const {data} = await getPostByUserId(1);
-    setPosts(data);
-  }
-
-  useEffect(() => {
-    getPosts();
-  }, []);
+  const [posts, setPosts] = useState(AllPosts);
 
   return <PostContext.Provider value={posts}>{children}</PostContext.Provider>;
 }

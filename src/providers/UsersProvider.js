@@ -1,19 +1,10 @@
-import React, {createContext, useState, useEffect, useContext} from 'react';
-import {requestsUsers} from '../services/api';
+import React, {createContext, useState, useContext} from 'react';
+import {AllUsers} from '../users';
 
 const UserContext = createContext();
 
 function UserProvider({children}) {
-  const [users, setUsers] = useState([]);
-
-  async function getUsers() {
-    const {data} = await requestsUsers();
-    setUsers(data);
-  }
-
-  useEffect(() => {
-    getUsers();
-  }, []);
+  const [users, setUsers] = useState(AllUsers);
 
   return <UserContext.Provider value={users}>{children}</UserContext.Provider>;
 }
